@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap CSS Playground</title>
+
+    <!-- Bootstrap 5 -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <style>
+        body {
+            background: #0d1117;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #161b22, #21262d);
+            border-bottom: 1px solid #30363d;
+        }
+
+        .header h1 {
+            color: #58a6ff;
+        }
+
+        .playground-card {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .panel {
+            min-height: 350px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #58a6ff;
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .controls-panel {
+            background: #161b22;
+        }
+
+        .stage-panel {
+            background: #0d1117;
+        }
+
+        .control-label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #c9d1d9;
+        }
+
+        .control-set {
+            margin-bottom: 25px;
+        }
+
+        .state-radio,
+        .state-flex,
+        .state-box,
+        .state-grad,
+        .state-shadow {
+            display: none;
+        }
+
+        .opt-btn {
+            cursor: pointer;
+            border: 1px solid #30363d;
+            background: #21262d;
+            color: #c9d1d9;
+            padding: 8px 12px;
+            display: inline-block;
+            margin: 3px;
+            border-radius: 6px;
+            transition: 0.2s;
+        }
+
+        .opt-btn:hover {
+            background: #30363d;
+            color: white;
+        }
+
+        .stage {
+            min-height: 300px;
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .stage-demo {
+            display: none;
+            width: 100%;
+            min-height: 240px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Show selected topic */
+
+        #tab-flex:checked ~ .playground-card .ctrl-flex,
+        #tab-box:checked ~ .playground-card .ctrl-box,
+        #tab-grad:checked ~ .playground-card .ctrl-grad,
+        #tab-shadow:checked ~ .playground-card .ctrl-shadow {
+            display: block;
+        }
+
+        #tab-flex:checked ~ .playground-card .flex-stage,
+        #tab-box:checked ~ .playground-card .box-stage,
+        #tab-grad:checked ~ .playground-card .grad-stage,
+        #tab-shadow:checked ~ .playground-card .shadow-stage {
+            display: flex;
+        }
+
+        #tab-flex:checked ~ .playground-card .exp-flex,
+        #tab-box:checked ~ .playground-card .exp-box,
+        #tab-grad:checked ~ .playground-card .exp-grad,
+        #tab-shadow:checked ~ .playground-card .exp-shadow {
+            display: block;
+        }
+
+        /* Hide all controls initially */
+
+        .control-set {
+            display: none;
+        }
+
+        /* Flexbox */
+
+        .flex-stage {
+            display: flex !important;
+            justify-content: flex-start;
+            gap: 10px;
+        }
+
+        .demo-box {
+            width: 70px;
+            height: 70px;
+            background: #58a6ff;
+            border: 3px solid #bc8cff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: bold;
+            border-radius: 8px;
+        }
+
+        .box-2 {
+            background: #bc8cff;
+        }
+
+        .box-3 {
+            background: #3fb950;
+        }
+
+        #flex-center:checked ~ .playground-card .flex-stage {
+            justify-content: center;
+        }
+
+        #flex-end:checked ~ .playground-card .flex-stage {
+            justify-content: flex-end;
+        }
+
+        #flex-between:checked ~ .playground-card .flex-stage {
+            justify-content: space-between;
+        }
+
+        /* Box Model */
+
+        .demo-box-model {
+            background: #58a6ff;
+            border: 3px solid #bc8cff;
+            padding: 10px;
+            color: white;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        #pad-med:checked ~ .playground-card .demo-box-model {
+            padding: 25px;
+        }
+
+        #pad-large:checked ~ .playground-card .demo-box-model {
+            padding: 45px;
+        }
+
+        /* Gradients */
+
+        .demo-gradient-box {
+            width: 250px;
+            height: 150px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #00d2ff, #3a7bd5);
+        }
+
+        #grad-purple:checked ~ .playground-card .demo-gradient-box {
+            background: linear-gradient(135deg, #b224ef, #7579ff);
+        }
+
+        #grad-sunset:checked ~ .playground-card .demo-gradient-box {
+            background: linear-gradient(135deg, #f857a6, #ff5858);
+        }
+
+        /* Shadows */
+
+        .demo-shadow-box {
+            width: 220px;
+            height: 140px;
+            background: #58a6ff;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        #sh-glow:checked ~ .playground-card .demo-shadow-box {
+            box-shadow: 0 0 25px rgba(88, 166, 255, 0.8);
+        }
+
+        #sh-deep:checked ~ .playground-card .demo-shadow-box {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9);
+        }
+
+        /* Explanation */
+
+        .exp-text {
+            display: none;
+            background: #21262d;
+            border-left: 4px solid #58a6ff;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        /* Code */
+
+        .code-box {
+            background: #010409;
+            border: 1px solid #30363d;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            overflow-x: auto;
+        }
+
+        .code-box pre {
+            display: none;
+            color: #79c0ff;
+            margin: 0;
+        }
+
+        #flex-start:checked ~ .playground-card .code-flex-start,
+        #flex-center:checked ~ .playground-card .code-flex-center,
+        #flex-end:checked ~ .playground-card .code-flex-end,
+        #flex-between:checked ~ .playground-card .code-flex-between,
+        #pad-small:checked ~ .playground-card .code-pad-small,
+        #pad-med:checked ~ .playground-card .code-pad-med,
+        #pad-large:checked ~ .playground-card .code-pad-large,
+        #grad-blue:checked ~ .playground-card .code-grad-blue,
+        #grad-purple:checked ~ .playground-card .code-grad-purple,
+        #grad-sunset:checked ~ .playground-card .code-grad-sunset,
+        #sh-light:checked ~ .playground-card .code-sh-light,
+        #sh-glow:checked ~ .playground-card .code-sh-glow,
+        #sh-deep:checked ~ .playground-card .code-sh-deep {
+            display: block;
+        }
+
+        /* Bootstrap tab buttons */
+
+        #tab-flex:checked ~ .tabs label[for="tab-flex"],
+        #tab-box:checked ~ .tabs label[for="tab-box"],
+        #tab-grad:checked ~ .tabs label[for="tab-grad"],
+        #tab-shadow:checked ~ .tabs label[for="tab-shadow"] {
+            background: #0d6efd;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .stage {
+                min-height: 250px;
+            }
+
+            .flex-stage {
+                flex-wrap: wrap;
+            }
+
+            .opt-btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Header -->
+<header class="header text-center py-5">
+    <div class="container">
+        <h1 class="fw-bold">Bootstrap CSS Interactive Playground</h1>
+        <p class="lead mb-0">
+            Learn CSS concepts visually using HTML, CSS & Bootstrap!
+        </p>
+    </div>
+</header>
+
+
+<div class="container py-5">
+
+    <div class="playground">
+
+        <!-- STATE MANAGERS -->
+
+        <input type="radio" name="topic" id="tab-flex"
+               class="state-radio" checked>
+
+        <input type="radio" name="topic" id="tab-box"
+               class="state-radio">
+
+        <input type="radio" name="topic" id="tab-grad"
+               class="state-radio">
+
+        <input type="radio" name="topic" id="tab-shadow"
+               class="state-radio">
+
+
+        <!-- FLEX OPTIONS -->
+
+        <input type="radio" name="flex-align" id="flex-start"
+               class="state-flex" checked>
+
+        <input type="radio" name="flex-align" id="flex-center"
+               class="state-flex">
+
+        <input type="radio" name="flex-align" id="flex-end"
+               class="state-flex">
+
+        <input type="radio" name="flex-align" id="flex-between"
+               class="state-flex">
+
+
+        <!-- BOX OPTIONS -->
+
+        <input type="radio" name="box-pad" id="pad-small"
+               class="state-box" checked>
+
+        <input type="radio" name="box-pad" id="pad-med"
+               class="state-box">
+
+        <input type="radio" name="box-pad" id="pad-large"
+               class="state-box">
+
+
+        <!-- GRADIENT OPTIONS -->
+
+        <input type="radio" name="grad-color" id="grad-blue"
+               class="state-grad" checked>
+
+        <input type="radio" name="grad-color" id="grad-purple"
+               class="state-grad">
+
+        <input type="radio" name="grad-color" id="grad-sunset"
+               class="state-grad">
+
+
+        <!-- SHADOW OPTIONS -->
+
+        <input type="radio" name="shadow-depth" id="sh-light"
+               class="state-shadow" checked>
+
+        <input type="radio" name="shadow-depth" id="sh-glow"
+               class="state-shadow">
+
+        <input type="radio" name="shadow-depth" id="sh-deep"
+               class="state-shadow">
+
+
+        <!-- NAVIGATION -->
+
+        <div class="tabs d-flex flex-wrap gap-2 justify-content-center mb-4">
+
+            <label for="tab-flex"
+                   class="tab-btn btn btn-outline-primary">
+                Flexbox
+            </label>
+
+            <label for="tab-box"
+                   class="tab-btn btn btn-outline-primary">
+                Box Model
+            </label>
+
+            <label for="tab-grad"
+                   class="tab-btn btn btn-outline-primary">
+                Gradients
+            </label>
+
+            <label for="tab-shadow"
+                   class="tab-btn btn btn-outline-primary">
+                Box Shadows
+            </label>
+
+        </div>
+
+
+        <!-- MAIN CARD -->
+
+        <div class="playground-card shadow-lg">
+
+            <div class="row g-0">
+
+                <!-- LEFT PANEL -->
+
+                <div class="col-lg-5 p-4 controls-panel">
+
+                    <div class="section-title">
+                        Interactive Controls
+                    </div>
+
+
+                    <!-- FLEX CONTROLS -->
+
+                    <div class="control-set ctrl-flex">
+
+                        <label class="control-label">
+                            justify-content (Alignment)
+                        </label>
+
+                        <div class="d-flex flex-wrap">
+
+                            <label for="flex-start"
+                                   class="opt-btn">
+                                flex-start
+                            </label>
+
+                            <label for="flex-center"
+                                   class="opt-btn">
+                                center
+                            </label>
+
+                            <label for="flex-end"
+                                   class="opt-btn">
+                                flex-end
+                            </label>
+
+                            <label for="flex-between"
+                                   class="opt-btn">
+                                space-between
+                            </label>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- BOX CONTROLS -->
+
+                    <div class="control-set ctrl-box">
+
+                        <label class="control-label">
+                            Padding (Inner Spacing)
+                        </label>
+
+                        <div class="d-flex flex-wrap">
+
+                            <label for="pad-small"
+                                   class="opt-btn">
+                                10px
+                            </label>
+
+                            <label for="pad-med"
+                                   class="opt-btn">
+                                25px
+                            </label>
+
+                            <label for="pad-large"
+                                   class="opt-btn">
+                                45px
+                            </label>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- GRADIENT CONTROLS -->
+
+                    <div class="control-set ctrl-grad">
+
+                        <label class="control-label">
+                            Color Theme
+                        </label>
+
+                        <div class="d-flex flex-wrap">
+
+                            <label for="grad-blue"
+                                   class="opt-btn">
+                                Cyan Flow
+                            </label>
+
+                            <label for="grad-purple"
+                                   class="opt-btn">
+                                Purple Aura
+                            </label>
+
+                            <label for="grad-sunset"
+                                   class="opt-btn">
+                                Sunset Neon
+                            </label>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SHADOW CONTROLS -->
+
+                    <div class="control-set ctrl-shadow">
+
+                        <label class="control-label">
+                            Shadow Style
+                        </label>
+
+                        <div class="d-flex flex-wrap">
+
+                            <label for="sh-light"
+                                   class="opt-btn">
+                                Soft Drop
+                            </label>
+
+                            <label for="sh-glow"
+                                   class="opt-btn">
+                                Neon Glow
+                            </label>
+
+                            <label for="sh-deep"
+                                   class="opt-btn">
+                                Deep Elevation
+                            </label>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- RIGHT PANEL -->
+
+                <div class="col-lg-7 p-4 stage-panel">
+
+                    <div class="section-title">
+                        Live Visual Preview
+                    </div>
+
+                    <div class="stage">
+
+                        <!-- FLEX -->
+
+                        <div class="stage-demo flex-stage">
+
+                            <div class="demo-box">
+                                1
+                            </div>
+
+                            <div class="demo-box box-2">
+                                2
+                            </div>
+
+                            <div class="demo-box box-3">
+                                3
+                            </div>
+
+                        </div>
+
+
+                        <!-- BOX -->
+
+                        <div class="stage-demo box-stage">
+
+                            <div class="demo-box-model">
+                                Box Content
+                            </div>
+
+                        </div>
+
+
+                        <!-- GRADIENT -->
+
+                        <div class="stage-demo grad-stage">
+
+                            <div class="demo-gradient-box"></div>
+
+                        </div>
+
+
+                        <!-- SHADOW -->
+
+                        <div class="stage-demo shadow-stage">
+
+                            <div class="demo-shadow-box"></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- EXPLANATION -->
+
+            <div class="p-4">
+
+                <div class="explanation">
+
+                    <div class="exp-text exp-flex">
+                        💡 <b>Flexbox</b> aligns multiple elements
+                        easily in rows or columns without float hacks.
+                    </div>
+
+                    <div class="exp-text exp-box">
+                        💡 <b>Box Model</b> consists of content space,
+                        padding inside, border, and outer margin.
+                    </div>
+
+                    <div class="exp-text exp-grad">
+                        💡 <b>Gradients</b> create smooth multi-color
+                        transitions across elements.
+                    </div>
+
+                    <div class="exp-text exp-shadow">
+                        💡 <b>Box Shadows</b> add realistic depth
+                        or glowing aura effects to boxes.
+                    </div>
+
+                </div>
+
+
+                <!-- CODE OUTPUT -->
+
+                <div class="code-box">
+
+                    <pre class="code-flex-start">.container {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+}</pre>
+
+                    <pre class="code-flex-center">.container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}</pre>
+
+                    <pre class="code-flex-end">.container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}</pre>
+
+                    <pre class="code-flex-between">.container {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}</pre>
+
+                    <pre class="code-pad-small">.box {
+  padding: 10px;
+  background: #58a6ff;
+  border: 3px solid #bc8cff;
+}</pre>
+
+                    <pre class="code-pad-med">.box {
+  padding: 25px;
+  background: #58a6ff;
+  border: 3px solid #bc8cff;
+}</pre>
+
+                    <pre class="code-pad-large">.box {
+  padding: 45px;
+  background: #58a6ff;
+  border: 3px solid #bc8cff;
+}</pre>
+
+                    <pre class="code-grad-blue">.card {
+  background: linear-gradient(135deg, #00d2ff, #3a7bd5);
+}</pre>
+
+                    <pre class="code-grad-purple">.card {
+  background: linear-gradient(135deg, #b224ef, #7579ff);
+}</pre>
+
+                    <pre class="code-grad-sunset">.card {
+  background: linear-gradient(135deg, #f857a6, #ff5858);
+}</pre>
+
+                    <pre class="code-sh-light">.box {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}</pre>
+
+                    <pre class="code-sh-glow">.box {
+  box-shadow: 0 0 25px rgba(88, 166, 255, 0.8);
+}</pre>
+
+                    <pre class="code-sh-deep">.box {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9);
+}</pre>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- Bootstrap JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,310 @@
+/* ==========================================
+   1. GLOBAL & VARIABLES
+   ========================================== */
+:root {
+  --bg-color: #0d1117;
+  --card-bg: rgba(22, 27, 34, 0.85);
+  --border-color: rgba(255, 255, 255, 0.1);
+  --primary: #58a6ff;
+  --accent: #bc8cff;
+  --text-main: #f0f6fc;
+  --text-sub: #8b949e;
+  --code-bg: #161b22;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+header h1 {
+  font-size: 2rem;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 6px;
+}
+
+header p {
+  color: var(--text-sub);
+}
+
+/* Hide Radio Inputs */
+.state-radio, .state-flex, .state-box, .state-grad, .state-shadow {
+  display: none;
+}
+
+/* ==========================================
+   2. TABS NAVIGATION
+   ========================================== */
+.playground {
+  width: 100%;
+  max-width: 850px;
+}
+
+.tabs {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.tab-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  color: var(--text-sub);
+  padding: 10px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+/* Tab Selection Highlighting via CSS */
+#tab-flex:checked ~ .tabs label[for="tab-flex"],
+#tab-box:checked ~ .tabs label[for="tab-box"],
+#tab-grad:checked ~ .tabs label[for="tab-grad"],
+#tab-shadow:checked ~ .tabs label[for="tab-shadow"] {
+  background: var(--primary);
+  color: #000;
+  border-color: var(--primary);
+}
+
+/* ==========================================
+   3. LAYOUT & PANELS
+   ========================================== */
+.playground-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 25px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.section-title {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-sub);
+  margin-bottom: 12px;
+}
+
+.control-label {
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  display: block;
+  color: var(--text-main);
+}
+
+.btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.opt-btn {
+  background: #0d1117;
+  border: 1px solid var(--border-color);
+  padding: 8px 12px;
+  border-radius: 8px;
+  color: var(--text-sub);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.opt-btn:hover {
+  border-color: var(--primary);
+  color: #fff;
+}
+
+/* Option Button Active States */
+#flex-start:checked ~ .playground-card label[for="flex-start"],
+#flex-center:checked ~ .playground-card label[for="flex-center"],
+#flex-end:checked ~ .playground-card label[for="flex-end"],
+#flex-between:checked ~ .playground-card label[for="flex-between"],
+#pad-small:checked ~ .playground-card label[for="pad-small"],
+#pad-med:checked ~ .playground-card label[for="pad-med"],
+#pad-large:checked ~ .playground-card label[for="pad-large"],
+#grad-blue:checked ~ .playground-card label[for="grad-blue"],
+#grad-purple:checked ~ .playground-card label[for="grad-purple"],
+#grad-sunset:checked ~ .playground-card label[for="grad-sunset"],
+#sh-light:checked ~ .playground-card label[for="sh-light"],
+#sh-glow:checked ~ .playground-card label[for="sh-glow"],
+#sh-deep:checked ~ .playground-card label[for="sh-deep"] {
+  border-color: var(--primary);
+  background: rgba(88, 166, 255, 0.15);
+  color: var(--primary);
+  font-weight: bold;
+}
+
+/* Show/Hide Controls based on Active Tab */
+.control-set { display: none; }
+#tab-flex:checked ~ .playground-card .ctrl-flex { display: block; }
+#tab-box:checked ~ .playground-card .ctrl-box { display: block; }
+#tab-grad:checked ~ .playground-card .ctrl-grad { display: block; }
+#tab-shadow:checked ~ .playground-card .ctrl-shadow { display: block; }
+
+/* ==========================================
+   4. STAGE PREVIEWS
+   ========================================== */
+.stage {
+  background: #090d13;
+  border: 1px dashed var(--border-color);
+  border-radius: 12px;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+}
+
+.stage-demo {
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+
+#tab-flex:checked ~ .playground-card .flex-stage { display: flex; }
+#tab-box:checked ~ .playground-card .box-stage { display: flex; align-items: center; justify-content: center; }
+#tab-grad:checked ~ .playground-card .grad-stage { display: block; }
+#tab-shadow:checked ~ .playground-card .shadow-stage { display: flex; align-items: center; justify-content: center; }
+
+/* Flexbox Stage Animations */
+.flex-stage {
+  transition: all 0.3s ease;
+  align-items: center;
+}
+
+.demo-box {
+  width: 45px;
+  height: 45px;
+  background: var(--primary);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  font-weight: bold;
+}
+.box-2 { background: var(--accent); }
+.box-3 { background: #7ee787; }
+
+#flex-start:checked ~ .playground-card .flex-stage { justify-content: flex-start; }
+#flex-center:checked ~ .playground-card .flex-stage { justify-content: center; }
+#flex-end:checked ~ .playground-card .flex-stage { justify-content: flex-end; }
+#flex-between:checked ~ .playground-card .flex-stage { justify-content: space-between; }
+
+/* Box Model Stage */
+.demo-box-model {
+  background: #58a6ff;
+  border: 3px solid #bc8cff;
+  color: #000;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+#pad-small:checked ~ .playground-card .demo-box-model { padding: 10px; }
+#pad-med:checked ~ .playground-card .demo-box-model { padding: 25px; }
+#pad-large:checked ~ .playground-card .demo-box-model { padding: 45px; }
+
+/* Gradient Stage */
+.demo-gradient-box {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+#grad-blue:checked ~ .playground-card .demo-gradient-box { background: linear-gradient(135deg, #00d2ff, #3a7bd5); }
+#grad-purple:checked ~ .playground-card .demo-gradient-box { background: linear-gradient(135deg, #b224ef, #7579ff); }
+#grad-sunset:checked ~ .playground-card .demo-gradient-box { background: linear-gradient(135deg, #f857a6, #ff5858); }
+
+/* Shadow Stage */
+.demo-shadow-box {
+  width: 80px;
+  height: 80px;
+  background: #58a6ff;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+#sh-light:checked ~ .playground-card .demo-shadow-box { box-shadow: 0 10px 20px rgba(0,0,0,0.6); }
+#sh-glow:checked ~ .playground-card .demo-shadow-box { box-shadow: 0 0 25px rgba(88, 166, 255, 0.9); }
+#sh-deep:checked ~ .playground-card .demo-shadow-box { box-shadow: 0 20px 40px rgba(0, 0, 0, 0.95); }
+
+/* ==========================================
+   5. EXPLANATION & CODE BOX
+   ========================================== */
+.explanation {
+  grid-column: 1 / -1;
+  background: rgba(88, 166, 255, 0.1);
+  border-left: 4px solid var(--primary);
+  padding: 12px 16px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.exp-text { display: none; }
+#tab-flex:checked ~ .playground-card .exp-flex { display: block; }
+#tab-box:checked ~ .playground-card .exp-box { display: block; }
+#tab-grad:checked ~ .playground-card .exp-grad { display: block; }
+#tab-shadow:checked ~ .playground-card .exp-shadow { display: block; }
+
+.code-box {
+  grid-column: 1 / -1;
+  background: var(--code-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.code-box pre {
+  display: none;
+  font-family: 'Consolas', 'Courier New', monospace;
+  color: var(--accent);
+  font-size: 0.9rem;
+}
+
+/* Pure CSS Code Output Switching */
+#tab-flex:checked ~ #flex-start:checked ~ .playground-card .code-flex-start,
+#tab-flex:checked ~ #flex-center:checked ~ .playground-card .code-flex-center,
+#tab-flex:checked ~ #flex-end:checked ~ .playground-card .code-flex-end,
+#tab-flex:checked ~ #flex-between:checked ~ .playground-card .code-flex-between,
+#tab-box:checked ~ #pad-small:checked ~ .playground-card .code-pad-small,
+#tab-box:checked ~ #pad-med:checked ~ .playground-card .code-pad-med,
+#tab-box:checked ~ #pad-large:checked ~ .playground-card .code-pad-large,
+#tab-grad:checked ~ #grad-blue:checked ~ .playground-card .code-grad-blue,
+#tab-grad:checked ~ #grad-purple:checked ~ .playground-card .code-grad-purple,
+#tab-grad:checked ~ #grad-sunset:checked ~ .playground-card .code-grad-sunset,
+#tab-shadow:checked ~ #sh-light:checked ~ .playground-card .code-sh-light,
+#tab-shadow:checked ~ #sh-glow:checked ~ .playground-card .code-sh-glow,
+#tab-shadow:checked ~ #sh-deep:checked ~ .playground-card .code-sh-deep {
+  display: block;
+}

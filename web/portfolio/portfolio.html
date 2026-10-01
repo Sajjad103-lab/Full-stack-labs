@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sajjad Ejaz | Computer Science Student</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        :root {
+            --accent: #ff7a00;
+            --dark: #0b0b0d;
+            --card: #151518;
+            --muted: #a7a7ad;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--dark);
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            background: rgba(11, 11, 13, .96);
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar-brand,
+        .nav-link,
+        .text-white {
+            color: #fff !important;
+        }
+
+        .navbar-brand span,
+        .accent {
+            color: var(--accent);
+        }
+
+        .nav-link:hover {
+            color: var(--accent) !important;
+        }
+
+        .btn-accent {
+            background: var(--accent);
+            color: #fff;
+            border: 1px solid var(--accent);
+        }
+
+        .btn-accent:hover {
+            background: transparent;
+            color: var(--accent);
+        }
+
+        .btn-outline-accent {
+            color: var(--accent);
+            border: 1px solid var(--accent);
+        }
+
+        .btn-outline-accent:hover {
+            background: var(--accent);
+            color: #fff;
+        }
+
+        .hero {
+            min-height: 92vh;
+            display: flex;
+            align-items: center;
+            padding-top: 100px;
+            background: radial-gradient(circle at 80% 30%, rgba(255,122,0,.12), transparent 35%);
+        }
+
+        .welcome,
+        .section-label {
+            color: var(--accent);
+            letter-spacing: 3px;
+            font-weight: 700;
+            font-size: .85rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-weight: 800;
+        }
+
+        .hero h2 {
+            color: #ddd;
+        }
+
+        .hero-description,
+        .muted {
+            color: var(--muted);
+        }
+
+        .profile-img {
+            width: 310px;
+            height: 310px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid var(--accent);
+            box-shadow: 0 0 45px rgba(255,122,0,.25);
+        }
+
+        .code-box {
+            background: #111114;
+            border: 1px solid #29292e;
+            border-radius: 15px;
+            padding: 20px;
+            max-width: 390px;
+            margin: 25px auto 0;
+            color: #ddd;
+        }
+
+        .code-box span {
+            color: var(--accent);
+        }
+
+        .code-top {
+            color: var(--accent);
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        section {
+            scroll-margin-top: 80px;
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .dark-card {
+            background: var(--card);
+            border: 1px solid #29292e;
+            color: #fff;
+            transition: .3s ease;
+        }
+
+        .dark-card:hover {
+            transform: translateY(-7px);
+            border-color: var(--accent);
+            box-shadow: 0 15px 35px rgba(0,0,0,.3);
+        }
+
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255,122,0,.12);
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+
+        .skill-card i {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        .project-icon {
+            height: 170px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #242428, #101012);
+            color: var(--accent);
+            font-size: 3.5rem;
+        }
+
+        .badge-tech {
+            background: rgba(255,122,0,.12);
+            color: #ff9a43;
+            border: 1px solid rgba(255,122,0,.25);
+            font-weight: 500;
+        }
+
+        .social-icon {
+            width: 44px;
+            height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #333;
+            border-radius: 50%;
+            color: #fff;
+            text-decoration: none;
+            transition: .3s;
+        }
+
+        .social-icon:hover {
+            color: #fff;
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .form-control,
+        .form-control:focus {
+            background: #111114;
+            border-color: #333;
+            color: #fff;
+            box-shadow: none;
+        }
+
+        .form-control::placeholder {
+            color: #777;
+        }
+
+        footer {
+            border-top: 1px solid #242428;
+            background: #080809;
+        }
+
+        @media (max-width: 991px) {
+            .hero {
+                text-align: center;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top border-bottom border-secondary">
+    <div class="container">
+        <a class="navbar-brand fw-bold fs-4" href="#home">
+            Sajjad <span>Ejaz</span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#mainNav" aria-controls="mainNav"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+                <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+                    <a href="#contact" class="btn btn-accent rounded-pill px-4">
+                        Let's Talk <i class="fa-solid fa-paper-plane ms-1"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-7">
+                <p class="welcome mb-3">HELLO, I'M</p>
+
+                <h1 class="mb-3">
+                    Sajjad <span class="accent">Ejaz</span>
+                </h1>
+
+                <h2 class="h3 mb-4">Computer Science Student</h2>
+
+                <p class="hero-description fs-5 mb-4">
+                    I'm a Computer Science student at Air University,
+                    passionate about software development, web technologies,
+                    backend development and building real-world applications.
+                </p>
+
+                <div class="d-flex flex-wrap gap-3 hero-buttons mb-4">
+                    <a href="#projects" class="btn btn-accent btn-lg rounded-pill px-4">
+                        <i class="fa-solid fa-code me-2"></i>View My Projects
+                    </a>
+                    <a href="#contact" class="btn btn-outline-accent btn-lg rounded-pill px-4">
+                        <i class="fa-regular fa-envelope me-2"></i>Contact Me
+                    </a>
+                </div>
+
+                <div class="d-flex gap-3">
+                    <a class="social-icon" href="https://github.com/Sajjad103-lab" target="_blank">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                    <a class="social-icon" href="https://instagram.com/yng.sajjad" target="_blank">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a class="social-icon" href="mailto:sajjuubroshall76@gmail.com">
+                        <i class="fa-solid fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-5 text-center">
+                <img src="profile.png.png" alt="Sajjad Ejaz" class="profile-img">
+
+                <div class="code-box text-start">
+                    <div class="code-top">&lt;/&gt;</div>
+                    <p><span>const</span> student = <b>"Sajjad"</b>;</p>
+                    <p><span>const</span> degree = <b>"CS"</b>;</p>
+                    <p class="mb-0"><span>const</span> goal = <b>"Build"</b>;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section-padding" id="about">
+    <div class="container">
+        <div class="text-center mb-5">
+            <p class="section-label mb-2">GET TO KNOW ME</p>
+            <h2 class="display-5 fw-bold">About <span class="accent">Me</span></h2>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-7">
+                <div class="dark-card rounded-4 p-4 p-lg-5 h-100">
+                    <p>
+                        My name is Sajjad Ejaz. I am a Computer Science
+                        student currently completing my Bachelor's degree
+                        from Air University.
+                    </p>
+                    <p>
+                        I enjoy learning new technologies and turning ideas
+                        into functional software applications.
+                    </p>
+                    <p class="mb-0">
+                        My interests include web development, backend
+                        development, mobile applications and emerging
+                        technologies such as AI.
+                    </p>
+                    <div class="accent fs-4 fw-bold mt-4">Sajjad Ejaz</div>
+                </div>
+            </div>
+
+            <div class="col-lg-5">
+                <div class="dark-card rounded-4 p-4 mb-4">
+                    <div class="icon-box mb-3">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="h4">Computer Science Student</h3>
+                    <h5 class="accent">Air University</h5>
+                    <p class="muted mb-0">
+                        Currently pursuing my Bachelor's degree in Computer
+                        Science and developing practical skills through
+                        academic and personal projects.
+                    </p>
+                </div>
+
+                <div class="dark-card rounded-4 p-4">
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <small class="muted">Location</small>
+                            <div><i class="fa-solid fa-location-dot accent me-2"></i>Pakistan</div>
+                        </div>
+                        <div class="col-12">
+                            <small class="muted">Email</small>
+                            <div><i class="fa-solid fa-envelope accent me-2"></i>sajjuubroshall76@gmail.com</div>
+                        </div>
+                        <div class="col-md-6">
+                            <small class="muted">GitHub</small>
+                            <div><i class="fa-brands fa-github accent me-2"></i>Sajjad103-lab</div>
+                        </div>
+                        <div class="col-md-6">
+                            <small class="muted">Instagram</small>
+                            <div><i class="fa-brands fa-instagram accent me-2"></i>@yng.sajjad</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section-padding bg-black" id="skills">
+    <div class="container">
+        <div class="text-center mb-5">
+            <p class="section-label mb-2">WHAT I WORK WITH</p>
+            <h2 class="display-5 fw-bold">My <span class="accent">Skills</span></h2>
+        </div>
+
+        <div class="row g-3">
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="dark-card skill-card rounded-4 p-4 text-center h-100">
+                    <i class="fa-solid fa-code mb-3"></i><h3 class="h5">C++</h3>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="dark-card skill-card rounded-4 p-4 text-center h-100">
+                    <i class="fa-solid fa-hashtag mb-3"></i><h3 class="h5">C#</h3>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="dark-card skill-card rounded-4 p-4 text-center h-100">
+                    <i class="fa-brands fa-html5 mb-3"></i><h3 class="h5">HTML</h3>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="dark-card skill-card rounded-4 p-4 text-center h-100">
+                    <i class="fa-brands fa-css3-alt mb-3"></i><h3 class="h5">CSS</h3>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="dark-card skill-card rounded-4 p-4 text-center h-100">
+                    <i class="fa-brands fa-js mb-3"></i><h3 class="h5">JavaScript</h3>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="dark-card skill-card rounded-4 p-4 text-center h-100">
+                    <i class="fa-solid fa-mobile-screen mb-3"></i><h3 class="h5">Dart</h3>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="dark-card skill-card rounded-4 p-4 text-center h-100">
+                    <i class="fa-solid fa-layer-group mb-3"></i><h3 class="h5">Flutter</h3>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="dark-card skill-card rounded-4 p-4 text-center h-100">
+                    <i class="fa-solid fa-code-branch mb-3"></i><h3 class="h5">Blazor</h3>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="dark-card skill-card rounded-4 p-4 text-center h-100">
+                    <i class="fa-solid fa-server mb-3"></i><h3 class="h5">ASP.NET Core</h3>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="dark-card skill-card rounded-4 p-4 text-center h-100">
+                    <i class="fa-solid fa-database mb-3"></i><h3 class="h5">SQL Server</h3>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="dark-card skill-card rounded-4 p-4 text-center h-100">
+                    <i class="fa-brands fa-git-alt mb-3"></i><h3 class="h5">Git</h3>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="dark-card skill-card rounded-4 p-4 text-center h-100">
+                    <i class="fa-brands fa-github mb-3"></i><h3 class="h5">GitHub</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section-padding" id="projects">
+    <div class="container">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3 mb-5">
+            <div>
+                <p class="section-label mb-2">MY RECENT WORK</p>
+                <h2 class="display-5 fw-bold mb-0">Projects</h2>
+            </div>
+            <a href="https://github.com/Sajjad103-lab" target="_blank"
+               class="btn btn-outline-accent rounded-pill">
+                View All Projects <i class="fa-solid fa-arrow-right ms-1"></i>
+            </a>
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-md-6 col-lg-4">
+                <div class="dark-card rounded-4 overflow-hidden h-100">
+                    <div class="project-icon"><i class="fa-solid fa-hotel"></i></div>
+                    <div class="p-4">
+                        <h3 class="h4">Dumani Nagar Hotel</h3>
+                        <p class="muted">Full-stack hotel website with room booking, services and admin functionality.</p>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="badge badge-tech">HTML</span><span class="badge badge-tech">CSS</span>
+                            <span class="badge badge-tech">C#</span><span class="badge badge-tech">ASP.NET Core</span>
+                            <span class="badge badge-tech">SQL Server</span>
+                        </div>
+                        <a href="#" class="text-decoration-none accent d-inline-block mt-3">View Project →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="dark-card rounded-4 overflow-hidden h-100">
+                    <div class="project-icon"><i class="fa-solid fa-plane"></i></div>
+                    <div class="p-4">
+                        <h3 class="h4">TripPlannerApp</h3>
+                        <p class="muted">Travel planning web application with weather integration, expense tracking and interactive maps.</p>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="badge badge-tech">Blazor</span><span class="badge badge-tech">C#</span>
+                            <span class="badge badge-tech">Bootstrap</span><span class="badge badge-tech">API</span>
+                            <span class="badge badge-tech">SQL Server</span>
+                        </div>
+                        <a href="#" class="text-decoration-none accent d-inline-block mt-3">View Project →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="dark-card rounded-4 overflow-hidden h-100">
+                    <div class="project-icon"><i class="fa-solid fa-chart-column"></i></div>
+                    <div class="p-4">
+                        <h3 class="h4">Accountly</h3>
+                        <p class="muted">Web-based pay calculator with charts, transaction management and reports.</p>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="badge badge-tech">Flutter</span><span class="badge badge-tech">Dart</span>
+                            <span class="badge badge-tech">Firebase</span><span class="badge badge-tech">SQLite</span>
+                        </div>
+                        <a href="#" class="text-decoration-none accent d-inline-block mt-3">View Project →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="dark-card rounded-4 overflow-hidden h-100">
+                    <div class="project-icon"><i class="fa-solid fa-calendar-check"></i></div>
+                    <div class="p-4">
+                        <h3 class="h4">Event Registration App</h3>
+                        <p class="muted">Event registration platform with Firebase authentication and Firestore.</p>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="badge badge-tech">Flutter</span><span class="badge badge-tech">Firebase</span>
+                            <span class="badge badge-tech">Firestore</span>
+                        </div>
+                        <a href="#" class="text-decoration-none accent d-inline-block mt-3">View Project →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="dark-card rounded-4 overflow-hidden h-100">
+                    <div class="project-icon"><i class="fa-solid fa-hospital"></i></div>
+                    <div class="p-4">
+                        <h3 class="h4">Hospital Map</h3>
+                        <p class="muted">Nearby hospital map using the Overpass API with location tracking.</p>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="badge badge-tech">Flutter</span><span class="badge badge-tech">Dart</span>
+                            <span class="badge badge-tech">Overpass API</span>
+                        </div>
+                        <a href="#" class="text-decoration-none accent d-inline-block mt-3">View Project →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="dark-card rounded-4 overflow-hidden h-100">
+                    <div class="project-icon"><i class="fa-solid fa-paw"></i></div>
+                    <div class="p-4">
+                        <h3 class="h4">Pet Renting Website</h3>
+                        <p class="muted">Website for renting pets with user and admin functionality.</p>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="badge badge-tech">Blazor</span><span class="badge badge-tech">C#</span>
+                            <span class="badge badge-tech">SQL Server</span>
+                        </div>
+                        <a href="#" class="text-decoration-none accent d-inline-block mt-3">View Project →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="dark-card rounded-4 overflow-hidden h-100">
+                    <div class="project-icon"><i class="fa-solid fa-music"></i></div>
+                    <div class="p-4">
+                        <h3 class="h4">Music Playlist Manager</h3>
+                        <p class="muted">C++ console application using custom data structures for playlist management.</p>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="badge badge-tech">C++</span><span class="badge badge-tech">OOP</span>
+                            <span class="badge badge-tech">DSA</span>
+                        </div>
+                        <a href="#" class="text-decoration-none accent d-inline-block mt-3">View Project →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="dark-card rounded-4 overflow-hidden h-100">
+                    <div class="project-icon"><i class="fa-solid fa-circle-question"></i></div>
+                    <div class="p-4">
+                        <h3 class="h4">Flutter Quiz App</h3>
+                        <p class="muted">Mobile quiz application with local SQLite database and CRUD functionality.</p>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="badge badge-tech">Flutter</span><span class="badge badge-tech">Dart</span>
+                            <span class="badge badge-tech">SQLite</span>
+                        </div>
+                        <a href="#" class="text-decoration-none accent d-inline-block mt-3">View Project →</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- EDUCATION + CONTACT -->
+<section class="section-padding bg-black" id="education">
+    <div class="container">
+        <div class="row g-5">
+
+            <div class="col-lg-6">
+                <p class="section-label mb-2">MY ACADEMIC JOURNEY</p>
+                <h2 class="display-6 fw-bold mb-4">Education</h2>
+
+                <div class="dark-card rounded-4 p-4">
+                    <div class="d-flex gap-3 align-items-start">
+                        <div class="icon-box flex-shrink-0">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <div>
+                            <h3 class="h4">Bachelor's in Computer Science</h3>
+                            <h4 class="h5 accent">Air University</h4>
+                            <p class="muted">2024 - Present</p>
+                            <p class="mb-0">
+                                Currently completing my degree in Computer Science
+                                and developing practical skills through academic
+                                and personal projects.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6" id="contact">
+                <p class="section-label mb-2">GET IN TOUCH</p>
+                <h2 class="display-6 fw-bold mb-4">Contact <span class="accent">Me</span></h2>
+
+                <div class="row g-4">
+                    <div class="col-md-5">
+                        <h3 class="h4">Let's work together.</h3>
+                        <p class="muted">Have a project idea or want to connect? Feel free to reach out to me.</p>
+
+                        <a href="mailto:sajjuubroshall76@gmail.com"
+                           class="d-block text-decoration-none text-white mb-3">
+                            <i class="fa-solid fa-envelope accent me-2"></i>
+                            sajjuubroshall76@gmail.com
+                        </a>
+                        <a href="https://github.com/Sajjad103-lab" target="_blank"
+                           class="d-block text-decoration-none text-white mb-3">
+                            <i class="fa-brands fa-github accent me-2"></i>
+                            Sajjad103-lab
+                        </a>
+                        <a href="https://instagram.com/yng.sajjad" target="_blank"
+                           class="d-block text-decoration-none text-white">
+                            <i class="fa-brands fa-instagram accent me-2"></i>
+                            @yng.sajjad
+                        </a>
+                    </div>
+
+                    <div class="col-md-7">
+                        <form>
+                            <div class="mb-3">
+                                <input type="text" class="form-control form-control-lg" placeholder="Your Name">
+                            </div>
+                            <div class="mb-3">
+                                <input type="email" class="form-control form-control-lg" placeholder="Your Email">
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" class="form-control form-control-lg" placeholder="Subject">
+                            </div>
+                            <div class="mb-3">
+                                <textarea class="form-control form-control-lg" rows="5"
+                                          placeholder="Your Message"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-accent rounded-pill px-4">
+                                <i class="fa-solid fa-paper-plane me-2"></i>Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-5 text-center">
+    <div class="container">
+        <div class="fs-3 fw-bold">
+            Sajjad <span class="accent">Ejaz</span>
+        </div>
+        <p class="muted">Computer Science Student &nbsp; | &nbsp; Developer</p>
+
+        <div class="d-flex justify-content-center gap-3 my-3">
+            <a class="social-icon" href="https://github.com/Sajjad103-lab" target="_blank">
+                <i class="fa-brands fa-github"></i>
+            </a>
+            <a class="social-icon" href="https://instagram.com/yng.sajjad" target="_blank">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a class="social-icon" href="mailto:sajjuubroshall76@gmail.com">
+                <i class="fa-solid fa-envelope"></i>
+            </a>
+        </div>
+
+        <p class="copyright muted mb-0">
+            © 2026 Sajjad Ejaz. All Rights Reserved.
+        </p>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
