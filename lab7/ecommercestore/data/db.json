@@ -1,0 +1,119 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Sara Khan",
+      "email": "sara1792917858727@example.com",
+      "salt": "b1f73796f1391798cd28ea2fe32ce315",
+      "hash": "e059bdd0591d04a55132dbf3ec36de1b48d6bed99ede526cdec0de5b9a8a75f4"
+    }
+  ],
+  "sessions": {
+    "875cd4d59b1350b8e099e5da14796017c982bb230834ab28": 1
+  },
+  "products": [
+    {
+      "id": 1,
+      "name": "Jasmine Pearls",
+      "category": "Tea",
+      "price": 14,
+      "description": "Hand-rolled green tea scented with jasmine."
+    },
+    {
+      "id": 2,
+      "name": "Assam Breakfast",
+      "category": "Tea",
+      "price": 11,
+      "description": "Malty, bold black tea for mornings."
+    },
+    {
+      "id": 3,
+      "name": "Roasted Oolong",
+      "category": "Tea",
+      "price": 16,
+      "description": "Toasty, mineral oolong with a long finish."
+    },
+    {
+      "id": 4,
+      "name": "Sencha Reserve",
+      "category": "Tea",
+      "price": 18,
+      "description": "Fresh, grassy Japanese green tea."
+    },
+    {
+      "id": 5,
+      "name": "Stoneware Teapot",
+      "category": "Teaware",
+      "price": 48,
+      "description": "Hand-finished 600ml teapot with steel infuser."
+    },
+    {
+      "id": 6,
+      "name": "Ceramic Cup Set",
+      "category": "Teaware",
+      "price": 32,
+      "description": "Set of two glazed cups."
+    },
+    {
+      "id": 7,
+      "name": "Bamboo Tea Scoop",
+      "category": "Teaware",
+      "price": 9,
+      "description": "Carved bamboo measuring scoop."
+    },
+    {
+      "id": 8,
+      "name": "Cast Iron Kettle",
+      "category": "Teaware",
+      "price": 65,
+      "description": "Enamelled 1L kettle that holds heat."
+    }
+  ],
+  "reviews": [
+    {
+      "id": 1,
+      "author": "Sara Khan",
+      "rating": 5,
+      "text": "Lovely jasmine tea, arrived fast.",
+      "createdAt": "2026-10-25T08:44:18.945Z"
+    }
+  ],
+  "carts": {
+    "1": []
+  },
+  "orders": [
+    {
+      "id": "KK-00001",
+      "userId": 1,
+      "items": [
+        {
+          "productId": 1,
+          "name": "Jasmine Pearls",
+          "price": 14,
+          "qty": 3,
+          "lineTotal": 42
+        }
+      ],
+      "subtotal": 42,
+      "shipping": 5,
+      "total": 47,
+      "contact": {
+        "name": "Sara Khan",
+        "email": "sara1792917858727@example.com"
+      },
+      "delivery": {
+        "address": "12 Mall Rd",
+        "city": "Rawalpindi",
+        "postal": "46000"
+      },
+      "payment": "cod",
+      "status": "Placed",
+      "createdAt": "2026-10-25T08:44:18.954Z"
+    }
+  ],
+  "nextIds": {
+    "user": 2,
+    "review": 2,
+    "order": 2
+  }
+}
