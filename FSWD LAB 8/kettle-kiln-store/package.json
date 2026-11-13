@@ -1,0 +1,12 @@
+{
+  "name": "kettle-kiln-store",
+  "version": "1.0.0",
+  "description": "Kettle & Kiln tea store (Node.js, no dependencies)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node api-test.js"
+  },
+  "engines": { "node": ">=20" }
+}

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e3eef4"/><stop offset="1" stop-color="#c8dbe6"/></linearGradient><linearGradient id="cyl" x1="0" x2="1"><stop offset="0" stop-color="#000" stop-opacity=".28"/><stop offset=".35" stop-color="#fff" stop-opacity=".2"/><stop offset=".62" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".32"/></linearGradient></defs>
+<rect width="400" height="300" fill="url(#bg)"/>
+<rect y="236" width="400" height="64" fill="#9db6c6" opacity=".55"/>
+<rect y="236" width="400" height="2" fill="#fff" opacity=".35"/>
+<ellipse cx="200" cy="250" rx="100" ry="12" fill="#000" opacity=".16"/>
+<path d="M296 246 l20 -6" stroke="#2f6b57" stroke-width="4" stroke-linecap="round"/><path d="M312 254 l-18 -8" stroke="#2f6b57" stroke-width="4" stroke-linecap="round"/><path d="M288 260 l22 4" stroke="#2f6b57" stroke-width="4" stroke-linecap="round"/><path d="M88 250 l18 -8" stroke="#2f6b57" stroke-width="4" stroke-linecap="round"/><path d="M76 260 l22 2" stroke="#2f6b57" stroke-width="4" stroke-linecap="round"/><path d="M312 266 l16 6" stroke="#2f6b57" stroke-width="4" stroke-linecap="round"/>
+<rect x="130" y="100" width="140" height="150" rx="10" fill="#17324d"/><rect x="130" y="100" width="140" height="150" rx="10" fill="url(#cyl)"/>
+<rect x="124" y="80" width="152" height="32" rx="9" fill="#234666"/><rect x="124" y="80" width="152" height="32" rx="9" fill="url(#cyl)"/>
+<rect x="124" y="106" width="152" height="6" fill="#000" opacity=".15"/>
+<rect x="150" y="128" width="100" height="92" rx="6" fill="#fbf8f1"/>
+<g transform="translate(200 160)"><path d="M0 14C-15 1 -9 -14 0 -17C9 -14 15 1 0 14Z" fill="#2f6b57"/><path d="M0 12V-12" stroke="#fff" stroke-width="1.5" opacity=".7"/></g>
+<text x="200" y="196" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-weight="bold" fill="#17324d">SENCHA</text>
+<text x="200" y="210" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" letter-spacing="1.5" fill="#17324d" opacity=".7">GREEN TEA</text>
+<rect x="130" y="228" width="140" height="7" fill="#e8a628"/>
+</svg>
